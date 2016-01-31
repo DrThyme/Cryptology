@@ -2,10 +2,11 @@ import string
 import sys
 import re
 from collections import Counter
-from bidict import bidict
+from bidict import bidict #Bidict might not work on the school computers.
 
 codec = sys.stdin.encoding
 
+# Dictionary containing all the allowed letters mapped to their number.
 d = bidict({
 	u'a': 0,
 	u'b': 1,
@@ -41,6 +42,7 @@ d = bidict({
 	u'.': 31
 })
 
+# A dictionary containing a frequency analysis of the Swedish language.
 char_freq = {
 	0: 0.072, 	#a
 	1: 0.011, 	#b
@@ -76,6 +78,8 @@ char_freq = {
 	31: 0.011	#.
 }
 
+# This function is used to get all divisors for the provided number n.
+# The divisors are returned as a list.
 def getDivisors(n):
 	l = []
 	for i in range(2,n):
@@ -83,6 +87,9 @@ def getDivisors(n):
 			l.append(i)
 	return l
 
+# This function is used to find the number of occurences for each substring
+# with length <16 inside the string cipher. A sorted list of each substring
+# and a count that substring is the returnedby the function.
 def fileOcc(cipher):
 	i=3
 	l = []
@@ -102,9 +109,17 @@ def fileOcc(cipher):
 	ll = sorted(l,key=lambda x: len(x[0]), reverse=True)
 	return ll
 
+# This function finds the start index of every string find found in the
+# string cipher.
+# Ex: 	s = 'abcffffabcabc'
+#	findLocation(s,'abc') => returns [0,7,10]
 def findLocation(cipher, find):
 	return [m.start() for m in re.finditer(find, cipher)]
 
+# This function calculates the occurence of each character in the provided
+# string text and returns the ratio of each character.
+# This is used to make a frequency analysis of a text so that we can use it 
+# for decoding the key.
 def freqAnalysis(text):
 	l = []
 	char_list = list(text)
@@ -114,6 +129,9 @@ def freqAnalysis(text):
 		l.append((d.inv[i],ratio))
 	return l
 
+# This functions cleans the provided string text of all characters that does
+# not exist in our allowed alphabet.
+# Ex:	cleanString(u'ab(32)CD') => returns u'abcd'
 def cleanString(text):
 	text = text.lower()
 	text = text.rstrip('\n')
@@ -121,6 +139,10 @@ def cleanString(text):
 	convert = re.sub('[^%s]'%allow,'',text)
 	return convert				 
 
+# This function splits the provided string text length number of chunks
+# each chunk will contain each character where i%mod length is the same.
+# The function returns these chunks as a nested list.
+# Ex:	splitString(3,'abcdef') => returns [['a','d'],['b','e'],['c','f']]
 def splitString(length,text):
 	l = []
 	for i in range(0,length):
@@ -128,14 +150,20 @@ def splitString(length,text):
 		l.append(l_new)
 	return l	
 
+####### This function is no longer in use #######
+# This function takes a nested list, each list containing characters. 
+# The function returns a list containing the most common character in each list.
+# Ex:	findMostCommon([['a','a','b'],['a','c','d','d']] => returns ['a','b']
 def findMostCommon(nl):
 	common = []
 	for l in nl:
 		temp = Counter(l)
 		common.append(temp.most_common()[0][0])
-		#common.append(temp.most_common())	
 	return common
 
+####### This function is no longer in use #######
+# This function takes the given list of common characters and shifts them
+# by 29 characters. This considers that space is the most common character in Swedish.
 def shift(common):
 	shift = []
 	key = []
@@ -146,6 +174,9 @@ def shift(common):
 		shift.append(d.inv[(i%29)])
 	return shift
 
+# This function takes a cipher and the number of substring occurences
+# and returns a Counter of all possible divisors between the repeated
+# occurences.
 def getKeyLength(cipher,occ,limit):
 	div = []
 	first = True
@@ -158,7 +189,9 @@ def getKeyLength(cipher,occ,limit):
 					div.append(num)
 	return Counter(div)
 
-
+# Using the function in the slides (lecture 4) this function calculates the
+# most probable key used to encrypt the cipher. This takes into count the 
+# frequency analysis of the Swedish language.
 def calcKey(split):
 	l_temp = []
 	l_k = []
@@ -176,6 +209,7 @@ def calcKey(split):
 		l_k.append(d.inv[index_k])
 	return l_k
 
+# Main function for encrypting a file.
 def encrypt(file,save,key):
 	print '### Encrypting file %s, result will be saved in %s ###' % (file,save) 
 	f = open(file,'r')
@@ -200,6 +234,7 @@ def encrypt(file,save,key):
 	f.write(cipher.encode(codec))
 	f.close()
 
+# Main function for decrypting a file.
 def decrypt(file,key):
 	print '### Decoding ###' 
 	f = open(file,'r')
@@ -220,7 +255,7 @@ def decrypt(file,key):
         	i+=1
 	print decrypted
 			
-
+# Main function for calculating the key length of a file.
 def keyLength(file):
 	print '### Finding key length of supplied cipher ###' 
 	f = open(file,'r')
@@ -232,6 +267,7 @@ def keyLength(file):
 	kl = getKeyLength(cipher,occ,16)
 	print kl
 
+# Main function for solving the most probable key to belonging to a cipher.
 def crackKey(file,length):
 	f = open(file,'r')
 	cipher = f.read()
@@ -239,11 +275,11 @@ def crackKey(file,length):
 	f.close()
 
 	nl = splitString(length,cipher)
-	#common = findMostCommon(nl)
 	key = calcKey(nl)
 
 	print 'The key might be: %s'%''.join(key)
 
+# Dictionary for commands given to the script.
 commands = {
 	'encrypt' : encrypt,
 	'decrypt' : decrypt,
@@ -251,6 +287,7 @@ commands = {
 	'crackKey' : crackKey
 }
 
+# Checks what command is given to the script and executes the corresponding function.
 arg = sys.argv
 if len(arg) == 3:
 	commands[arg[1]](arg[2])
@@ -263,29 +300,3 @@ elif len(arg) == 5:
 	commands[arg[1]](arg[2],arg[3],arg[4])
 else:
 	print 'Invalid amount of arguments'
-
-f = open('vig_group17.temp','r')
-s = f.read()
-f.close()
-#print codec
-s = s.decode(codec)
-s = cleanString(s)
-f = open('vig_group17.key','w')
-f.write(s.encode(codec))
-f.close()
-
-#nl = splitString(5,s)
-#anz = findMostCommon(nl)
-
-#f = open('cipher.txt','r')
-#c = f.read()
-#f.close()
-#c = c.decode(codec)
-#c = cleanString(c)
-
-#cl = splitString(11,c)
-#cnz = findMostCommon(cl)
-#keys = calcKey(cl)
-#print keys
-#print cnz
-
