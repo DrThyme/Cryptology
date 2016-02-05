@@ -4,7 +4,8 @@ import re
 from collections import Counter
 import timeit
 
-codec = sys.stdin.encoding
+#codec = sys.stdin.encoding
+codec = 'utf-8'
 
 # Dictionary containing all the allowed letters mapped to their number.
 char_int = {
@@ -142,6 +143,7 @@ def fileOcc(cipher):
 			num = len(find)
 		i+=1
 	ll = sorted(l,key=lambda x: len(x[0]), reverse=True)
+	print ll
 	return ll
 
 # This function finds the start index of every string find found in the
@@ -199,6 +201,7 @@ def getKeyLength(cipher,occ,limit):
 			for num in divNum:
 				if num <= limit:
 					div.append(num)
+	print Counter(div)
 	return Counter(div)
 
 # Using the function in the slides (lecture 4) this function calculates the
@@ -265,7 +268,7 @@ def decrypt(file,key):
         	ciph_num = (char_int[letter]-char_int[key_letter])%32
         	decrypted += int_char[ciph_num]
         	i+=1
-	print decrypted
+	print decrypted.encode(codec)
 			
 def keyLengthSpec(file):
 	f = open(file,'r')
@@ -365,7 +368,7 @@ def complete(file):
 			print decrypted
 			ans = raw_input('Does this look right? (y/n): ')
 			
-	print decrypted
+	print decrypted.encode(codec)
 
 	## The following part can be used for saving the result to a file	
 	#f = open('result.txt','a')
