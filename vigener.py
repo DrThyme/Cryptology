@@ -185,29 +185,6 @@ def splitString(length,text):
 		l.append(l_new)
 	return l	
 
-####### This function is no longer in use #######
-# This function takes a nested list, each list containing characters. 
-# The function returns a list containing the most common character in each list.
-# Ex:	findMostCommon([['a','a','b'],['a','c','d','d']] => returns ['a','b']
-def findMostCommon(nl):
-	common = []
-	for l in nl:
-		temp = Counter(l)
-		common.append(temp.most_common()[0][0])
-	return common
-
-####### This function is no longer in use #######
-# This function takes the given list of common characters and shifts them
-# by 29 characters. This considers that space is the most common character in Swedish.
-def shift(common):
-	shift = []
-	key = []
-	for item in common:
-		i = 29
-		while (i%32) != char_int[item]:
-			i+=1
-		shift.append(int_char[(i%29)])
-	return shift
 
 # This function takes a cipher and the number of substring occurences
 # and returns a Counter of all possible divisors between the repeated
@@ -290,6 +267,16 @@ def decrypt(file,key):
         	i+=1
 	print decrypted
 			
+def keyLengthSpec(file):
+	f = open(file,'r')
+	cipher = f.read()
+	cipher = cipher.decode(codec)
+	f.close()
+
+	occ = fileOcc(cipher)	
+	kl = getKeyLength(cipher,occ,len(cipher))
+	return list(kl)
+
 # Main function for calculating the key length of a file.
 def keyLength(file):
 	print '### Finding key length of supplied cipher ###' 
@@ -313,6 +300,7 @@ def crackKey(file,length):
 	key = calcKey(nl)
 
 	print 'The key might be: %s'%''.join(key)
+
 
 def complete(file):
 	f = open(file,'r')
@@ -391,6 +379,42 @@ def complete(file):
 	print 'DONE'
 	#print decrypted
 
+# Used for decrypting ciphers with long key.
+def special():
+	t1 = load('ciphers/text1.crypto')
+	t2 = load('ciphers/text2.crypto')
+	t3 = load('ciphers/text3.crypto')
+	t4 = load('ciphers/text4.crypto')
+	t5 = load('ciphers/text5.crypto')
+
+	a = keyLengthSpec('ciphers/text1.crypto')
+	b = keyLengthSpec('ciphers/text2.crypto')
+	c = keyLengthSpec('ciphers/text3.crypto')
+	d = keyLengthSpec('ciphers/text4.crypto')
+	e = keyLengthSpec('ciphers/text5.crypto')
+
+	l = [t1,t2,t3,t4,t5]
+	res = set(a) & set(b) & set(c) & set(e) #& set(d)   ## Omit text4 since it doesn't have 214 as divisor
+	print res
+	kl = raw_input('Enter key length: ')
+	kl = int(kl)
+	total = u''
+	for item in l:
+		end = len(item)-len(item)%kl
+		total = total + item[:end]
+	nl = splitString(kl,total)
+	key = calcKey(nl)
+
+	print u''.join(key)
+	
+def load(file):
+	f = open(file,'r')
+	cipher = f.read()
+	cipher = cipher.decode(codec)
+	f.close()
+
+	cipher = cleanString(cipher)
+	return cipher
 	
 	
 # Dictionary for commands given to the script.
@@ -399,12 +423,15 @@ commands = {
 	'decrypt' : decrypt,
 	'keyLength' : keyLength,
 	'crackKey' : crackKey,
-	'complete' : complete
+	'complete' : complete,
+	'special' : special
 }
 
 # Checks what command is given to the script and executes the corresponding function.
 arg = sys.argv
-if len(arg) == 3:
+if len(arg) == 2:
+	commands[arg[1]]()
+elif len(arg) == 3:
 	commands[arg[1]](arg[2])
 elif len(arg) == 4:
 	if arg[1] == 'decrypt':
@@ -415,3 +442,4 @@ elif len(arg) == 5:
 	commands[arg[1]](arg[2],arg[3],arg[4])
 else:
 	print 'Invalid amount of arguments'
+
