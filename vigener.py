@@ -2,12 +2,12 @@ import string
 import sys
 import re
 from collections import Counter
-from bidict import bidict #Bidict might not work on the school computers.
+import timeit
 
 codec = sys.stdin.encoding
 
 # Dictionary containing all the allowed letters mapped to their number.
-d = bidict({
+char_int = {
 	u'a': 0,
 	u'b': 1,
 	u'c': 2,
@@ -40,7 +40,42 @@ d = bidict({
 	u' ': 29,
 	u',': 30,
 	u'.': 31
-})
+}
+
+int_char = {
+	0: u'a',
+	1: u'b',
+	2: u'c',
+	3: u'd',
+	4: u'e',
+	5: u'f',
+	6: u'g',
+	7: u'h',
+	8: u'i',
+	9: u'j',
+	10: u'k',
+	11: u'l',
+	12: u'm',
+	13: u'n',
+	14: u'o',
+	15: u'p',
+	16: u'q',
+	17: u'r',
+	18: u's',
+	19: u't',
+	20: u'u',
+	21: u'v',
+	22: u'w',
+	23: u'x',
+	24: u'y',
+	25: u'z',
+	26: u'\xe5',
+	27: u'\xe4',
+	28: u'\xf6',
+	29: u' ',
+	30: u',',
+	31: u'.'
+}
 
 # A dictionary containing a frequency analysis of the Swedish language.
 char_freq = {
@@ -125,8 +160,8 @@ def freqAnalysis(text):
 	char_list = list(text)
 	occ = Counter(char_list)
 	for i in range(0,32):
-		ratio = occ[d.inv[i]]/float(len(text))
-		l.append((d.inv[i],ratio))
+		ratio = occ[int_char[i]]/float(len(text))
+		l.append((int_char[i],ratio))
 	return l
 
 # This functions cleans the provided string text of all characters that does
@@ -169,9 +204,9 @@ def shift(common):
 	key = []
 	for item in common:
 		i = 29
-		while (i%32) != d[item]:
+		while (i%32) != char_int[item]:
 			i+=1
-		shift.append(d.inv[(i%29)])
+		shift.append(int_char[(i%29)])
 	return shift
 
 # This function takes a cipher and the number of substring occurences
@@ -201,12 +236,12 @@ def calcKey(split):
 		for k in range(0,32):
 			sum = 0
 			for i in range(0,32):
-				num = occ[d.inv[(i+k)%32]]
+				num = occ[int_char[(i+k)%32]]
 				sum += (char_freq[i]*(num/float(len(item))))	
 			l_temp.append(sum)
 		best_k = max(l_temp)
 		index_k = l_temp.index(best_k)
-		l_k.append(d.inv[index_k])
+		l_k.append(int_char[index_k])
 	return l_k
 
 # Main function for encrypting a file.
@@ -225,8 +260,8 @@ def encrypt(file,save,key):
 
 	for letter in plain:
         	key_letter = key[i%len(key)]
-        	ciph_num = (d[letter]+d[key_letter])%32
-        	cipher += d.inv[ciph_num]
+        	ciph_num = (char_int[letter]+char_int[key_letter])%32
+        	cipher += int_char[ciph_num]
         	i+=1
 
 	f = open(save,'w')
@@ -250,8 +285,8 @@ def decrypt(file,key):
 
 	for letter in cipher:
         	key_letter = key[i%len(key)]
-        	ciph_num = (d[letter]-d[key_letter])%32
-        	decrypted += d.inv[ciph_num]
+        	ciph_num = (char_int[letter]-char_int[key_letter])%32
+        	decrypted += int_char[ciph_num]
         	i+=1
 	print decrypted
 			
@@ -279,12 +314,92 @@ def crackKey(file,length):
 
 	print 'The key might be: %s'%''.join(key)
 
+def complete(file):
+	f = open(file,'r')
+	cipher = f.read()
+	cipher = cipher.decode(codec)
+	f.close()
+
+	cipher = cleanString(cipher)
+	
+	sum=0
+	ans = 'n'
+	while ans=='n':	
+		print '################################'
+		print 'Possible key lengths displayed below:'
+		start = timeit.default_timer()
+		occ = fileOcc(cipher)	
+		kl = getKeyLength(cipher,occ,16)
+		stop = timeit.default_timer()
+		print kl
+		
+		sum+=(stop-start)
+	
+		print '################################'
+		inp = raw_input('Please enter key length: ')
+		start = timeit.default_timer()
+		nl = splitString(int(inp),cipher)
+		key = calcKey(nl)
+		stop = timeit.default_timer()
+		sum+=(stop-start)
+	
+		print '################################'
+		print 'The key might be: %s'%''.join(key)
+		print '################################'
+		
+		print 'Now decoding file using key: '+''.join(key)
+
+		i = 0
+		decrypted = u''
+
+		key = ''.join(key)
+		start = timeit.default_timer()
+		for letter in cipher:
+        		key_letter = key[i%len(key)]
+        		ciph_num = (char_int[letter]-char_int[key_letter])%32
+        		decrypted += int_char[ciph_num]
+        		i+=1
+		stop = timeit.default_timer()
+		sum+=(stop-start)
+		print decrypted
+		ans = raw_input('Does this look right? (y/n/k): ')
+		if ans == 'k':
+			key = raw_input('Use what key? ')
+			key = key.decode(codec)
+			decrypted  = ''
+			i = 0
+			print 'Now decoding file using key: '+key
+			for letter in cipher:
+        			key_letter = key[i%len(key)]
+        			ciph_num = (char_int[letter]-char_int[key_letter])%32
+        			decrypted += int_char[ciph_num]
+        			i+=1
+			print decrypted
+			ans = raw_input('Does this look right? (y/n): ')
+			
+	print decrypted
+
+	## The following part can be used for saving the result to a file	
+	#f = open('result.txt','a')
+	#f.write(file)
+	#f.write('\n')
+	#f.write('The key was: %s \n'%key.encode(codec))
+	#f.write(decrypted.encode(codec))
+	#f.write('\n## Runtime: %s'%str(sum))
+	#f.write('\n\n')
+	#f.close()
+	print 'DONE'
+	#print decrypted
+
+	
+	
 # Dictionary for commands given to the script.
 commands = {
 	'encrypt' : encrypt,
 	'decrypt' : decrypt,
 	'keyLength' : keyLength,
-	'crackKey' : crackKey
+	'crackKey' : crackKey,
+	'complete' : complete
 }
 
 # Checks what command is given to the script and executes the corresponding function.

@@ -1,0 +1,100 @@
+ciphers/vig_group1.crypto
+The key was: stålman 
+för att få texten komplett måste ju även släktkrönikorna och annat läggas in. det var ett stort arbete, som underlättas om fler hjälps åt. men på den tiden fanns inga digitalkameror eller bredbandsanslutningar, mest långsamma modem. tillräckligt många hade dock en bibel, ett tangentbord och möjligheten att skicka epost.
+## Runtime: 0.0176293849945
+
+ciphers/vig_group2.crypto
+The key was: rjpptxuvåödälvgi 
+ordböcker har blivit en stor genre i projekt runeberg. redan i december  digitaliserade vi biblisk ordbok  av erik nyström. vi hade då precis börjat införa faksimilutgåvor med scannade bilder av boksidorna, inte bara text, och ville vi prova hur det fungerade för ordböcker. det dröjde dock fem år till nästa försök, när sjätte upplagan av svenska akademiens ordlista  digitaliserades i november . vid nyåret hade  år passerat efter elof hellquists bortgång och i mars  digitaliserade vi hans svensk etymologisk ordbok
+## Runtime: 0.050372838974
+
+ciphers/vig_group4.crypto
+The key was: bara bra nyckel 
+stalintiden hade dominerats av hög centralstyrning. efter andra världskriget var situationen dålig för den sovjetiska befolkningen, jordbruket hade svårt att producera mat åt den växande befolkningen, bostäderna var hälsovådliga, varor och service för konsumenterna var av dålig kvalitet eller fanns inte alls att tillgå, allmänna transporter var opålitliga och överfulla, de sammanlagda bristerna gjorde att arbetarna inte kunde arbeta produktivt och ledde till oroligheter inom den sovjetiska inflytandesfären.
+## Runtime: 0.0533051490784
+
+ciphers/vig_group5.crypto
+The key was: nyckel 
+detta är en text på svenska. den ska krypteras med hjälp av vigenere chiffret. det uppfanns av en man, men det är en annan man som har fått äran för det. om ni lyckas läsa denna text så har ni lyckats med er avkryptering, grattis.
+## Runtime: 0.0704891681671
+
+ciphers/vig_group6.crypto
+The key was: choklad 
+uppsala domkyrka är en katedral i gotisk stil. den största av dess klockor, kallad storan, är sveriges största kyrkklocka. svenska kyrkan gör uppskattningen att ca en halv miljon människor besöker uppsala domkyrka varje år. bland kyrkoskatterna finns bl a det förgyllda skrinet med erik den heliges reliker som står i ett sidokapell nära högaltaret. även gustav vasa, johan iii och deras gemåler, magnus stenbock, emanuel swedenborg, carl von linne och nathan söderblom är begravda i uppsala domkyrka.
+## Runtime: 0.0685963630676
+
+ciphers/vig_group7.crypto
+The key was: encryption 
+ordböcker har blivit en stor genre i projekt runeberg. redan i december  digitaliserade vi biblisk ordbok  av erik nyström. vi hade då precis börjat införa faksimilutgåvor med scannade bilder av boksidorna, inte bara text, och ville vi prova hur det fungerade för ordböcker. 
+## Runtime: 0.201482534409
+
+ciphers/vig_group8.crypto
+The key was: doftöverkänslig 
+då såg jag ett vilddjur stiga upp ur havet, det hade tio horn och sju huvuden, och på sina horn hade det tio kronor och på sina huvuden hädiska namn. och vilddjuret, som jag såg, liknade en panter, men det hade fötter såsom en björn och gap såsom ett lejon. och draken gav det sin makt och sin tron och gav det stor myndighet. och jag såg ett av dess huvuden vara likasom sårat till döds, men dess dödssår blev läkt. och hela jorden såg med förundran efter vilddjuret.
+## Runtime: 0.0326459407806
+
+ciphers/vig_group9.crypto
+The key was: svampwqxr..ö 
+det blev ingen snygg landning, men konstruktionen höll. det var ingen uppvisning. det var flykten från ett av världens mest spektakulära rån. i den kategorin fick det duga, tänkte han och slog av huvudströmmen. turbinen gav ifrån sig ett dovt mörkt ljud. det kunde ha kommit från något förhistorisk monster. först då bröt svetten ut. han klev ur, darrande i benen, och sneglade in. i baksätet stod dunken kvar och en av lamporna som rånarna använt till att fästa på sina paintballmasker. han försökte att tänka klart.
+## Runtime: 0.068336725235
+
+ciphers/vig_group10.crypto
+The key was: öyku ächensimona 
+det här en en text som ska krypteras. jag vet inte alls vad jag ska skriva, men jag måste väl hitta på någonting, på något sätt. jag ska ha mellan tvåhundra till sexhundra karaktärer, men jag tror att det är bättre att ha färre.
+## Runtime: 0.0731279850006
+
+ciphers/vig_group11.crypto
+The key was: mammapappa 
+en vårdag bestämmer sig mumintrollet, snusmumriken och sniff för att ge sig ut i världen och hitta på något ovanligt. uppe på en bergstopp hittar de en hög, svart hatt. och det är inte vilken hatt som helst. allt som läggs i den förvandlas. ett äggskal blir till fem små moln som man kan sitta på. mumintrollet gömmer sig i hatten och förvandlas till ett läskigt spökdjur. och när muminmamman råkar tappa en bukett rosa perenner i hatten förvandlas muminhuset till en djungel. det blir en underbar och hemsk sommar som aldrig kommer att glömmas i mumindalen.
+## Runtime: 0.0327260494232
+
+ciphers/vig_group12.crypto
+The key was: a.thlp a,,lepqfi 
+kryptografi, konsten att göra text obegriplig för utomstående och obehöriga. kryptografin är det operativa utförandet av det man studerar inom kryptologin, läran om kryptografi. inom kryptografin använder man olika krypteringsalgoritmer, även kallade chiffer, för att göra ett meddelande skrivet i klartext obegripligt för utomstående. klartexten översätts till chiffertext med hjälp av en förutbestämd algoritm och en kryptonyckel. kryptering delas normalt upp i två kategorier.
+## Runtime: 0.109264373779
+
+ciphers/vig_group13.crypto
+The key was: vipmasterkey 
+blåklint cyanus segetum, eller tidigare centaurea cyanus, är en art i familjen korgblommiga växter. ursprungslandet är kina. under pleistocen växte blåklint på stäpptundran i södra europa och följde med isens avsmältning norrut på öppna gräsmarker. den fick dock sin stora spridning först med jordbrukets införande som ogräsväxt. blåklinten växer i norra europa i huvudsak i samband med odlad jord, men i östra medelhavsområdet växer den helt fritt. 
+## Runtime: 0.0286059379578
+
+ciphers/vig_group14.crypto
+The key was: do not ask me 
+inom kryptologin studerar man kryptografi  metoder för att förvanska meddelanden så att obehöriga inte kan läsa dem  och kryptoanalys  metoder för att forcera sådana meddelanden . i modern tid låter man även metoder för autenticering vara en del av kryptologin då dessa använder liknande metoder och har liknande syften som kryptologin i övrigt. koder och metoder för att gömma meddelanden, steganografi ingår inte i kryptologins ämnesområde.
+## Runtime: 0.0617520809174
+
+ciphers/vig_group15.crypto
+The key was: pingis 
+jan ove waldner står för en av de största bragderna i svensk idrottshistoria. os triumfen i barcelona. med sin guldmedalj befäste jo sveriges position som ledande pingisnation. storhetstiden inleddes med vm dortmund då sverige lyckades med det som hela världen försökt i många år att besegra kina. världens största bordtennisnation.
+## Runtime: 0.0206708908081
+
+ciphers/vig_group16.crypto
+The key was: hejhejhej 
+studentportalen används vid undervisning och kursadministration av studenter, lärare och administratörer vid uppsala universitet. vilka hjälptexter som visas beror på om du är inloggad eller inte samt om du är student eller anställd. kontakta gärna servicedesk om du som student behöver hjälp med studentportalen, studentkonto, inloggning och utskrifter. kontakta alltid den kursansvariga institutionen om frågorna gäller en specifik kurs, schema och dess innehåll.
+## Runtime: 0.133138418198
+
+ciphers/vig_group17.crypto
+The key was: gummibearsftw 
+snälla och rara, helt underbara och deras saga berättas igen, hörs deras sånger som för många gånger, djupt in i skogen där lever dom än hipp hurra för här kommer bumbibjörnarna studsar fram igenom sagorna och vi får följa med bumbibärsaften,den magiska kraften och visst blir man stark om man dricker utav den onskan och törnar,det klarar små björnar de kämpar och godheten segrar igen hipp hurra för här kommer bumbibjörnarna studsar fram igenom sagorna och vi får följa med och vi får följa med.
+## Runtime: 0.0388672351837
+
+ciphers/vig_group18.crypto
+The key was: svensk bäst 
+uppsala universitet är sveriges första universitet, grundat redan . vi är idag ett brett forskningsuniversitet med tydliga mål att bedriva forskning och utbildning av högsta kvalitet och samverka med det omgivande samhället för att på olika sätt bidra till en bättre värld.kanske ligger vår främsta styrka i att kombinera en levande tradition med vilja till ständig utveckling. kunskapens förnyelse drivs av att våra kompetenta lärare och forskare ständigt möter nyfikna, kritiska och aktiva studenter. vi rankas stadigt bland världens  främsta lärosäten.
+## Runtime: 0.0322291851044
+
+ciphers/vig_group20.crypto
+The key was: dekrypterar., xq 
+krypteringen fungerar på följande vis, nyckelordets bokstäver skrivs, en och en, ovanför bokstäverna i den klartext som skall krypteras. om nyckelordet är efg och vi ska kryptera jag, letas först klartextbokstaven j upp i vigenere tabellens översta rad. nyckelbokstaven e finner man i bokstavskolumnen längst till vänster i tabellen. i skärningspunkten mellan kolumnen och raden finner man bokstaven n. sedan fortsätter man med klartextens och nyckelns andra bokstäver tills hela texten är krypterad.
+## Runtime: 0.0830547809601
+
+ciphers/vig_group21.crypto
+The key was: kom igen katten 
+jag vet att ni saknar förmåga.att förstå allra enklaste sak.men trots att ni är mest en plåga.ska jag delge er nåt i min smak....ni har inte erfarenheten.inget begrepp hur man gör.en kunglig entr och jag vet en.som ni nog snart bör buga er för....var beredd, här är chansen för livet.var beredd på en stor sensation.en tid fylld av ära.den är ganska nära.och vad ska vi göra.nu ska ni få höra....vad mästaren tänker.belöning jag skänker.ja, åtminstone lite beröm.ett geni som har oanad bredd.var beredd.
+## Runtime: 0.0389220714569
+
+ciphers/vig_group42.crypto
+The key was: bob hundbob hund 
+bob hund. mer än så kan ingen bli. vi har väl aldrig sagt att du ska dit. vi har väl aldrig gjort nåt ont med flit. du kan kalla mig för idiot, det har jag ingenting emot, jag är en idiot. mer än så kan ingen... vågar du va rädd står jag på knä. vågar du va rädd står jag på knä, om du ber mig. vi har väl aldrig sagt att du är ful. vi har väl alltid skickat kort till jul. du kan kalla mig fär idiot. det har jag ingenting emot. jag är en idiot. mer än så kan ingen bli. vågar du va rädd står jag på knä. vågar du va rädd står jag på knä, om du ber mig.
+## Runtime: 0.0619456768036
+
