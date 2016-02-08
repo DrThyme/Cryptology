@@ -143,7 +143,6 @@ def fileOcc(cipher):
 			num = len(find)
 		i+=1
 	ll = sorted(l,key=lambda x: len(x[0]), reverse=True)
-	print ll
 	return ll
 
 # This function finds the start index of every string find found in the
@@ -201,7 +200,6 @@ def getKeyLength(cipher,occ,limit):
 			for num in divNum:
 				if num <= limit:
 					div.append(num)
-	print Counter(div)
 	return Counter(div)
 
 # Using the function in the slides (lecture 4) this function calculates the
@@ -368,8 +366,6 @@ def complete(file):
 			print decrypted
 			ans = raw_input('Does this look right? (y/n): ')
 			
-	print decrypted.encode(codec)
-
 	## The following part can be used for saving the result to a file	
 	#f = open('result.txt','a')
 	#f.write(file)
